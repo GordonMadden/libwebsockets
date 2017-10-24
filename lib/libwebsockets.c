@@ -85,7 +85,7 @@ lws_free_wsi(struct lws *wsi)
 	lws_header_table_force_to_detachable_state(wsi);
 	lws_header_table_detach(wsi, 0);
 
-	if (wsi->vhost->lserv_wsi == wsi)
+	if (wsi->vhost && wsi->vhost->lserv_wsi == wsi)
 		wsi->vhost->lserv_wsi = NULL;
 
 	lws_pt_lock(pt);
